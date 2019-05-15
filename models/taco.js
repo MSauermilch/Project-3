@@ -14,16 +14,12 @@ const tacoSchema = new Schema({
     type: String,
     required: true
   },
-  garnish: {
-    type: String,
-    required: true
-  },
   date: {
     type: Date,
     default: Date.now
   }
 });
 
-const Drink = mongoose.model("Drink", drinkSchema);
+const Taco = mongoose.model("Taco", tacoSchema);
 
-module.exports = Drink;
+module.exports = Taco;
