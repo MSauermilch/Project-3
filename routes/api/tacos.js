@@ -6,7 +6,7 @@ router.route("/")
   .get(tacosController.findAll)
   .post(tacosController.create);
 
-// matches with "/api/books/:id"
+// matches with "/api/tacos/:id"
 router
   .route("/:id")
   .get(tacosController.findById)
