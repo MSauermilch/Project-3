@@ -1,5 +1,5 @@
 const express = require("express");
-
+const jwt = require('jsonwebtoken');
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
@@ -15,8 +15,10 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/tacolist";
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/tacolist");
+mongoose.connect(MONGODB_URI);
+// Connect to the Mongo DB
 
 // Start the API server
 app.listen(PORT, function () {
