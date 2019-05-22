@@ -1,0 +1,47 @@
+
+Google maps to dos. 
+(rewrite in mark up)
+
+*   figure google map gps locations.
+*   how to search addresses using google maps
+*   shink taco icons
+*   custom location marker for person
+
+------------------example marker info--------------
+
+ var markers =[ 
+
+            {
+            coors: {lat: 30.201,lng: -97.879981}, <== location of marker
+            iconimage: "", <== taco icon
+
+            content: Restaurant Name + '\n' +
+                     geolocation + '\n',
+                     rating: ,
+            },
+
+---------------------------------------------------
+
+------------------ psuedo code ideas --------------
+
+"your review"
+
+input box --
+
+    hidden --
+    *   (auto-fill id for database entry)
+    *   (auto-fill user_id)
+
+    user entry --
+    *   Restaurant Name
+
+    *   'geolocation' -- 
+        A Find Place request is an HTTP URL of the following form:
+        https://maps.googleapis.com/maps/api/place/findplacefromtext/json?parameters
+
+    *   rating
+    *   Favorite taco
+    *   review
+    *   (picture)
+
+---------------------------------------------------

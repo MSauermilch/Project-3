@@ -1,0 +1,24 @@
+
+    *   'geolocation' -- 
+            A Find Place request is an HTTP URL of the following form:
+            https://maps.googleapis.com/maps/api/place/findplacefromtext/json?parameters
+
+Certain parameters are required to initiate a Find Place request. As is standard in URLs, all parameters are separated using the ampersand (&) character.
+
+Required parameters
+
+    key — Your application's API key. 
+
+    input — The text input specifying which place to search for (for example, a name or address)
+
+    inputtype — The type of input. This can be one of either textquery. (Check that it is set to textquery)
+
+Find Place examples
+The following example shows a Find Place request for "Museum of Contemporary Art Australia", including the photos, formatted_address, name, rating, opening_hours, and geometry fields:
+
+Torchys:
+https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=torchys%20tacos%20Austin&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyATPSXO6bKoMy5EnL8lMZ90G902NqsOZzY
+
+Google examples:
+https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=YOUR_API_KEY
+
