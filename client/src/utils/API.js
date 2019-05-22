@@ -10,8 +10,8 @@ export default {
   deleteTaco: function (id) {
     return axios.delete("/api/tacos/" + id);
   },
-  saveTaco: function (tacosData) {
-    return axios.post("/api/tacos", tacosData);
+  saveTaco: function (tacoData) {
+    return axios.post("/api/tacos", tacoData);
   },
 
 };

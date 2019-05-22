@@ -26,13 +26,13 @@ const tacoSchema = new Schema({
     type: Number,
     required: true
   },
-  tacoPhoto: {
+  taco_photo: {
     type: String,
     required: false
   },
   location: {
     type: String,
-    required: true
+    required: false
   },
   date: {
     type: Date,
@@ -43,3 +43,6 @@ const tacoSchema = new Schema({
 const Taco = mongoose.model("Taco", tacoSchema);
 
 module.exports = Taco;
+
+
+

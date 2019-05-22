@@ -1,3 +1,5 @@
 module.exports = {
-  Tacos: require("./taco")
+  Taco: require("./taco")
+  // ,User: require("./user")
+  // , UserSession: require("./userSession")
 }

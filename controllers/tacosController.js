@@ -1,4 +1,4 @@
-const db = require("../models");
+const db = require("../models/taco");
 
 //defining mothods for tacosControllers
 module.exports = {
@@ -23,13 +23,13 @@ module.exports = {
   },
   update: function (req, res) {
     db.Taco
-      .findOneAndUpdate({ taco_id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   remove: function (req, res) {
     db.Taco
-      .findById({ taco_id: req.params.id })
+      .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

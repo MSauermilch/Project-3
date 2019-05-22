@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Input, TextArea, SubmitBtn } from "../components/Form";
+import { List, ListItem } from 'react';
 // import IngredientInput from "../components/IngredientInput";
 
 class Tacos extends Component {
@@ -129,9 +130,9 @@ class Tacos extends Component {
         <div>
           <h1>list</h1>
           {this.state.tacos.length ? (
-            <div>
+            <List>
               {this.state.tacos.map(taco => (
-                <div key={taco.taco_id}>
+                <ListItem key={taco.taco_id}>
                   <Link to={"/tacos/" + taco.taco_id}>
                     <strong>
                       {taco.tacoType} by {taco.taco_id}
@@ -140,9 +141,9 @@ class Tacos extends Component {
                   <button onClick={() =>
                     this.deleteTaco(taco.taco_id)
                   } >x</button>
-                </div>
+                </ListItem>
               ))}
-            </div>
+            </List>
           ) : (
               <h3>No results to be displayed</h3>
             )}

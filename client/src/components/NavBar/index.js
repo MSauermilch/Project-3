@@ -42,13 +42,13 @@ function NavBar(props) {
             Home
                     </Button>
           <Button color="inherit" component={TacosLink}>
-            TacosLink
+            Tacos
                     </Button>
           <Button color="inherit" component={SignUpLink}>
-            SignUpLink
+            SignUp
                     </Button>
           <Button color="inherit" component={SignInLink}>
-            SignInLink
+            SignIn
                     </Button>
         </Toolbar>
       </AppBar>
