@@ -21,9 +21,10 @@ _place for screenshots and further info_
 
 ## Contributors
 
-* Matt Sauermilch | [GitHub](https://github.com/MSauermilch) [Website](https://msauermilch.github.io)
-* Colin Lawrence | [GitHub](https://github.com/Clawrence005)
-* William Gannon | [Github](https://github.com/w-j-gannon) [Website](https://w-j-gannon.github.io/)
+* Matt Sauermilch | [GitHub](https://github.com/MSauermilch) | [Website](https://msauermilch.github.io)
+* Colin Lawrence | [GitHub](https://github.com/Clawrence005) | 
+* Finot Habteab | [GitHub](https://github.com/fino22) | [Website](https://fino22.github.io)
+* William Gannon | [Github](https://github.com/w-j-gannon) | [Website](https://w-j-gannon.github.io/)
 
 ## Technologies
 
