@@ -13,6 +13,8 @@ const tacoSeed = [
     rating: "3",
     taco_photo: "https://media.gettyimages.com/photos/soft-beef-tacos-with-fries-picture-id614313140?s=612x612",
     location: "some chuys",
+    lat: 30.201,
+    lng: -97.879981,
     date: new Date(Date.now())
   }, {
     taco_id: "ew55eew312",
@@ -23,6 +25,8 @@ const tacoSeed = [
     rating: "5",
     taco_photo: "https://www.eatingonadime.com/wp-content/uploads/2018/05/street-tacos-square.jpg",
     location: "eastside",
+    lat: 30.4689,
+    lng: -97.595573,
     date: new Date(Date.now())
   }, {
     taco_id: "5hjkjh454545",
@@ -33,6 +37,8 @@ const tacoSeed = [
     rating: "2",
     taco_photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMUGsiicGUlz2Tr5q7fzeWGBZIcqZB8_pqizggoUGnRZ8h5lB-VA",
     location: "riverside",
+    lat: 30.383457,
+    lng: -97.770789,
     date: new Date(Date.now())
   }
 ];

@@ -30,9 +30,18 @@ const tacoSchema = new Schema({
     type: String,
     required: false
   },
-  location: {
-    type: String,
-    required: false
+  // Commited out in place lat/lng
+  // location: {
+  //   type: String,
+  //   required: false
+  // },
+  lat: {
+    type: Number,
+    required: true
+  },
+  lng: {
+    type: Number,
+    required: true
   },
   date: {
     type: Date,

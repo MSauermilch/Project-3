@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="x-UA-Compatible" content="ie=edge">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Hot-Tacos/torchys</title>
+</head>
+
+<body>
+
+      <!-- Form -->
+      <div><center>
+            <form>
+              <br><br>
+              Taco Spot:<br>
+                <input type="text" id="TacoSpot" value=""><br> <!--database-->
+              Street Address:<br>
+                <input type="text" id="location" value=""><br> <!--QueryURL&database-->
+              Rating:<br>
+                <input type="text" id="rating" value=""><br> <!--database-->
+              Favorite Taco:<br>
+                <input type="text" id="favorite_taco" value=""><br> <!--database-->
+              Review:<br>
+                <input type="text" id="review" value=""><br> <!--database-->
+              Photo:<br>
+                <input type="text" id="photo" value=""><br><br> <!--database-->
+              <!--Submit-->
+              <button id="submit" type="button" form="form1" value="Submit">Submit</button>
+            </form>
+          </center></div>
+
+<script>      
+//----------------------------------------------- CLICK/FORM GRAB ------------------------------------------------------------------------------
+        var lat;
+        var lng;
+
+        $("#submit").click(function(){
+          //Grabs location from form
+            var address = $("#location").val();
+          // Google Geocode API URL
+            var queryURL ="https://maps.googleapis.com/maps/api/geocode/json?address=" + address + ",+Austin,+Tx&key=AIzaSyATPSXO6bKoMy5EnL8lMZ90G902NqsOZzY";
+
+//----------------------------------------------- AJAX CALL ------------------------------------------------------------------------------
+                // ajax request to return data based on the Topics Var
+                    $.ajax({
+                        url: queryURL,
+                        method: "GET"
+                        }).then(function(response) {
+
+                            var formatted_address = response.results[0].formatted_address;
+                            var lat = response.results[0].geometry.location.lat;
+                            var lng = response.results[0].geometry.location.lng;
+
+                              console.log("lat: " + lat);
+                              console.log("lng: " + lng);
+
+                        }).catch(function(err){
+                              console.log("error");
+                        });
+          });
+    // Form grab
+
+//----------------------------------------------- AJAX CALL ------------------------------------------------------------------------------
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
