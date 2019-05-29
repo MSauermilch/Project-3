@@ -1,36 +1,54 @@
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
+var bcrypt = require('bcrypt');
 
-const UserSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-    default: ''
-  },
-  lastName: {
-    type: String,
-    default: ''
-  },
+// Schema defines how the user's data will be stored in MongoDB
+var UserSchema = new mongoose.Schema({
   email: {
     type: String,
-    default: ''
+    lowercase: true,
+    unique: true,
+    required: true
   },
   password: {
     type: String,
-    default: ''
+    required: true
   },
-  isDeleted: {
-    type: Boolean,
-    default: false
-  },
-
+  role: {
+    type: String,
+    enum: ['Client', 'Manager', 'Admin'],
+    default: 'Client'
+  }
 });
 
-UserSchema.methods.generateHash = function (password) {
-  return bcrypt.hasSync(password, bcrypt.genSaltSync(8), null);
-}
+// Saves the user's password hashed (plain text password storage is not good)
+UserSchema.pre('save', function (next) {
+  var user = this;
+  if (this.isModified('password') || this.isNew) {
+    bcrypt.genSalt(10, function (err, salt) {
+      if (err) {
+        return next(err);
+      }
+      bcrypt.hash(user.password, salt, function (err, hash) {
+        if (err) {
+          return next(err);
+        }
+        user.password = hash;
+        next();
+      });
+    });
+  } else {
+    return next();
+  }
+});
 
-UserSchema.methods.validPassword = function (password) {
-  return bcrypt.compareSync(password, this.password);
-}
-
+// Create method to compare password input to password saved in database
+UserSchema.methods.comparePassword = function (pw, cb) {
+  bcrypt.compare(pw, this.password, function (err, isMatch) {
+    if (err) {
+      return cb(err);
+    }
+    cb(null, isMatch);
+  });
+};
 
 module.exports = mongoose.model('User', UserSchema);

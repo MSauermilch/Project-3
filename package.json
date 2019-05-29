@@ -15,11 +15,19 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.3.0",
     "bcrypt": "^3.0.6",
+    "body-parser": "^1.15.0",
+    "decode": "^0.3.0",
     "express": "^4.16.4",
     "if-env": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.5.7"
+    "jwt-decode": "^2.2.0",
+    "mongoose": "^5.5.11",
+    "morgan": "^1.9.1",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
