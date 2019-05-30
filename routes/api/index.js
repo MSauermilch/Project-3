@@ -10,11 +10,11 @@ var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 
 require('../../config/passport')(passport);
-// const fetch = '../../client/src/components/Auth/AuthHelperMethods';
 
 //tacos routes
 router.use("/tacos", tacoRoutes);
-router.use("/users", userRoutes);
+// router.use("/users", userRoutes);
+
 
 // Register new users
 router.post('/register', function (req, res) {

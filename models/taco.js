@@ -14,6 +14,10 @@ const tacoSchema = new Schema({
     type: String,
     required: true
   },
+  rating: {
+    type: Number,
+    required: true
+  },
   review: {
     type: String,
     required: true
@@ -22,16 +26,21 @@ const tacoSchema = new Schema({
     type: String,
     required: true
   },
-  rating: {
-    type: Number,
-    required: true
-  },
+
   taco_photo: {
     type: String,
     required: false
   },
   location: {
     type: String,
+    required: false
+  },
+  lat: {
+    type: Number,
+    required: false
+  },
+  lng: {
+    type: Number,
     required: false
   },
   date: {

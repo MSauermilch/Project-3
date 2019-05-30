@@ -1,9 +1,30 @@
 import React, { Component } from "react";
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import DeleteBtn from "../components/DeleteBtn";
+import Banner from "../components/Banner";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
+import { List, ListItem } from "../components/List";
 import { Input, TextArea, SubmitBtn } from "../components/Form";
-import { List, ListItem } from 'react';
+// import PlusButton from '../components/PlusButton';
+import Typography from '@material-ui/core/Typography';
 // import IngredientInput from "../components/IngredientInput";
+// import InputForm from '../components/Input';
+import TextField from '@material-ui/core/TextField';
+import TacoForm from "../components/TacoForm";
+import IngredientInput from "../components/IngredientInput";
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+});
 
 class Tacos extends Component {
   state = {
@@ -14,9 +35,9 @@ class Tacos extends Component {
     review: "",
     restaurant: "",
     rating: "",
-    tacoPhoto: "",
-    // location: "",
-    // date: ""
+    // tacoPhoto: "",
+    lat: "",
+    lng: ""
   };
 
   componentDidMount() {
@@ -29,13 +50,15 @@ class Tacos extends Component {
         tacos: res.data,
         taco_id: "",
         user_id: "",
+
         taco_type: "",
+        rating: "",
         review: "",
         restaurant: "",
-        rating: "",
-        tacoPhoto: "",
-        // location: "",
-        // date: ""
+
+        // tacoPhoto: "",
+        lat: "",
+        lng: ""
       }))
       .catch(err => console.log(err));
   };
@@ -55,102 +78,160 @@ class Tacos extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.taco_id && this.state.user_id && this.state.restaurant && this.state.rating) {
+    if (this.state.taco_id && this.state.user_id && this.state.taco_type && this.state.restaurant && this.state.review && this.state.rating && this.state.lat && this.state.lng) {
       API.saveTaco({
         taco_id: this.state.taco_id,
         user_id: this.state.user_id,
-        tacoType: this.state.taco_type,
-        review: this.state.review,
+
+        taco_type: this.state.taco_type,
         restaurant: this.state.restaurant,
+        review: this.state.review,
+
         rating: this.state.rating,
-        tacoPhoto: this.state.tacoPhoto,
-        // location: this.state.location,
+        // tacoPhoto: this.state.tacoPhoto,
+        lat: this.state.lat,
+        lng: this.state.lng
       })
         .then(res => this.loadTacos())
         .catch(err => console.log(err));
     }
   };
+
   render() {
     return (
       <div>
+        <Grid container spacing={24}>
+          <Grid item xs={12} md={6}>
+            <Paper>
+              <Banner><h1>Hot Taco</h1></Banner>
+              <form className="form-container">
+                <Typography variant="h6" gutterBottom>
+                  Enter Your Tacos
+                </Typography>
+                {/* <IngredientInput /> */}
 
-        <div>
-          <h1>Hot Tacos</h1>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    required id="taco_id"
+                    name="taco_id"
+                    label="Id of Taco"
+                    value={this.state.taco_id}
+                    onChange={this.handleInputChange}
+                    fullWidth />
+                </Grid>
 
-          <form>
-            <Input
-              value={this.state.taco_id}
-              onChange={this.handleInputChange}
-              name="taco_id"
-              placeholder="taco id"
-            />
-            <Input
-              value={this.state.user_id}
-              onChange={this.handleInputChange}
-              name="user_id"
-              placeholder="user id"
-            />
-            <Input
-              value={this.state.taco_type}
-              onChange={this.handleInputChange}
-              name="taco_type"
-              placeholder="taco description"
-            />
-            <TextArea
-              value={this.state.review}
-              onChange={this.handleInputChange}
-              name="review"
-              placeholder="review"
-            />
-            <Input
-              value={this.state.restaurant}
-              onChange={this.handleInputChange}
-              name="restaurant"
-              placeholder="restaurant"
-            />
-            <Input
-              value={this.state.rating}
-              onChange={this.handleInputChange}
-              name="rating"
-              placeholder="rating"
-            />
-            {/* <upload photo /> */}
-            {/* location */}
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    required id="taco_type"
+                    name="taco_type"
+                    label="Type of Taco"
+                    value={this.state.taco_type}
+                    onChange={this.handleInputChange}
+                    fullWidth />
+                </Grid>
 
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    required id="user_id"
+                    name="user_id"
+                    label="User Id"
+                    value={this.state.user_id}
+                    onChange={this.handleInputChange}
+                    fullWidth />
+                </Grid>
 
-            <SubmitBtn
-              disabled={!(
-                this.state.taco_id && this.state.user_id && this.state.restaurant && this.state.rating)}
-              onClick={this.handleFormSubmit}
-            >
-            </SubmitBtn>
-          </form>
-        </div>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    name="rating"
+                    required id="rating"
+                    label="Rating"
+                    value={this.state.rating}
+                    onChange={this.handleInputChange}
+                    fullWidth
+                  />
+                </Grid>
 
-        <div>
-          <h1>list</h1>
-          {this.state.tacos.length ? (
-            <List>
-              {this.state.tacos.map(taco => (
-                <ListItem key={taco.taco_id}>
-                  <Link to={"/tacos/" + taco.taco_id}>
-                    <strong>
-                      {taco.tacoType} by {taco.taco_id}
-                    </strong>
-                  </Link>
-                  <button onClick={() =>
-                    this.deleteTaco(taco.taco_id)
-                  } >x</button>
-                </ListItem>
-              ))}
-            </List>
-          ) : (
-              <h3>No results to be displayed</h3>
-            )}
-        </div>
-      </div>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    name="restaurant"
+                    required id="restaurant"
+                    label="Restaurant"
+                    value={this.state.restaurant}
+                    onChange={this.handleInputChange}
+                    fullWidth
+                  />
+                </Grid>
 
-    )
+                <Grid item xs={12} md={6}>
+                  <TextArea
+                    value={this.state.review}
+                    onChange={this.handleInputChange}
+                    name="review"
+                    placeholder="Review(required)"
+                  /></Grid>
+
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    name="lat"
+                    required id="lat"
+                    label="Latitude"
+                    value={this.state.lat}
+                    onChange={this.handleInputChange}
+                    fullWidth
+                  />
+                </Grid>
+
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    name="lng"
+                    required id="lng"
+                    label="Longitude"
+                    value={this.state.lng}
+                    onChange={this.handleInputChange}
+                    fullWidth
+                  />
+                </Grid>
+                <SubmitBtn
+                  disabled={!(this.state.taco_id && this.state.user_id && this.state.taco_type && this.state.user_id && this.state.lng)}
+                  onClick={this.handleFormSubmit}
+                >
+                </SubmitBtn>
+                {/* </Grid>  */}
+              </form>
+            </Paper>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <Paper>
+              <Banner><h1>The Tacos</h1></Banner>
+              <Grid container spacing={24}>
+                {this.state.tacos.length ? (<div>
+                  <List>
+                    {this.state.tacos.map(taco => (
+                      <ListItem key={taco._id}>
+                        <Link to={"/tacos/" + taco._id}>
+                          <strong>
+                            {taco.taco_type} by {taco.user_id}
+                          </strong>
+                        </Link>
+                        <DeleteBtn onClick={() =>
+                          this.deleteTaco(taco._id)
+                        } />
+                      </ListItem>
+                    ))}
+                  </List>
+
+                </div>
+
+                ) : (
+                    <h3>No results to be displayed</h3>
+                  )}
+              </Grid>
+            </Paper>
+          </Grid>
+        </Grid>
+      </div >
+    );
   }
 };
 

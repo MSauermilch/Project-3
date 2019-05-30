@@ -8,10 +8,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 // import MenuIcon from '@material-ui/icons/Menu';
-
-const SignInLink = props => <Link to="/signin" {...props} />
-const SignUpLink = props => <Link to="/register/signup" {...props} />
 const HomeLink = props => <Link to="/" {...props} />
+const RegisterLink = props => <Link to="/api/register" {...props} />
+const LoginLink = props => <Link to="/api/login" {...props} />
 const TacosLink = props => <Link to="/api/tacos" {...props} />
 
 const styles = {
@@ -44,10 +43,10 @@ function NavBar(props) {
           <Button color="inherit" component={TacosLink}>
             Tacos
                     </Button>
-          <Button color="inherit" component={SignUpLink}>
+          <Button color="inherit" component={LoginLink}>
             SignUp
                     </Button>
-          <Button color="inherit" component={SignInLink}>
+          <Button color="inherit" component={RegisterLink}>
             SignIn
                     </Button>
         </Toolbar>

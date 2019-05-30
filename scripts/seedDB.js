@@ -43,10 +43,10 @@ const tacoSeed = [
   }
 ];
 
-db.Taco
+db.Tacos
   .remove({})
   .then(() =>
-    db.Taco.collection.insertMany(tacoSeed))
+    db.Tacos.collection.insertMany(tacoSeed))
   .then(data => {
     console.log(data.result.n + "taco records inserted!");
     process.exit(0);
@@ -56,37 +56,32 @@ db.Taco
     process.exit(1);
   });
 
-// const userSeed = [
-//   {
-    // firstName: 'John',
-    // lastName: 'Billingsly',
-    // email: 'john@email.com',
-    // password: 'password1',
-    // isDeleted: false
-//   }, {
-//     firstName: 'jim',
-//     lastName: 'Beam',
-//     email: 'beamer@email.com',
-//     password: 'password2',
-//     isDeleted: false
-//   }, {
-//     firstName: 'kelly',
-//     lastName: 'o\'brien',
-//     email: 'kelly@email.com',
-//     password: 'password3',
-//     isDeleted: false
-//   }
-// ];
+const userSeed = [
+  {
+    email: 'john@email.com',
+    password: 'password1',
+    role: 'Client'
 
-// db.User
-//   .remove({})
-//   .then(() =>
-//     db.User.collection.insertMany(userSeed))
-//   .then(data => {
-//     console.log(data.result.n + " user records inserted!");
-//     process.exit(0);
-//   })
-//   .catch(err => {
-//     console.error(err);
-//     process.exit(1);
-//   });
+  }, {
+    email: 'beamer@email.com',
+    password: 'password2',
+    role: 'Client'
+  }, {
+    email: 'kelly@email.com',
+    password: 'password3',
+    role: 'Client'
+  }
+];
+
+db.User
+  .remove({})
+  .then(() =>
+    db.User.collection.insertMany(userSeed))
+  .then(data => {
+    console.log(data.result.n + " user records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });

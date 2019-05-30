@@ -4,7 +4,7 @@ export default {
   getTacos: function () {
     return axios.get("/api/tacos");
   },
-  geTaco: function (id) {
+  getTaco: function (id) {
     return axios.get("/api/tacos/" + id);
   },
   deleteTaco: function (id) {
@@ -12,6 +12,8 @@ export default {
   },
   saveTaco: function (tacoData) {
     return axios.post("/api/tacos", tacoData);
+    // },
+    // saveTaco: function (tacoData) {
+    //   return axios.post("/api/dashboard", tacoData);
   },
-
 };

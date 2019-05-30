@@ -1,4 +1,4 @@
-const db = require("../models/taco");
+const db = require("../models/");
 
 //defining mothods for tacosControllers
 module.exports = {
