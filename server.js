@@ -7,8 +7,8 @@ const PORT = process.env.PORT || 3001;
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var passport = require('passport');
-var config = require('./config/.env');
-// var config = require('./config/main');
+// var config = require('./config/.env');
+var config = require('./config/main');
 var User = require('./models/user');
 const router = require("express").Router();
 /*routes:

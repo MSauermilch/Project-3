@@ -3,8 +3,7 @@ var ExtractJwt = require('passport-jwt').ExtractJwt;
 // var jwt = require('jsonwebtoken');
 // var mongoose = require('mongoose');
 var User = require('../models/user');
-// const User = mongoose.model("users");
-var config = require('../config/.env');
+var config = require('../config/main');
 var passport = require('passport');
 // require('../config/passport')(passport);
 
