@@ -191,8 +191,8 @@ class TacoForm extends Component {
                 >
                 </SubmitBtn>
               </form>
-            </Paper >
-          </Grid >
+            </Paper>
+          </Grid>
 
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <Paper>
@@ -221,8 +221,8 @@ class TacoForm extends Component {
               </Grid>
             </Paper>
           </Grid>
-        </Grid >
-      </div >
+        </Grid>
+      </div>
     );
   }
 };
