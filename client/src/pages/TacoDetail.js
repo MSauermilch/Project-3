@@ -1,56 +1,58 @@
-// import React, { Component } from 'react';
-// import API from '../utils/API';
-// import Card from '../components/Card';
-// import { Link } from "react-router-dom";
+import React, { Component } from 'react';
 
-// class TacoDetail extends Component {
-//   state = {
-//     taco: {}
-//   };
+import Card from '../components/Card';
+import { Link } from "react-router-dom";
+import API from '../utils/API';
 
-//   componentDidMount() {
-//     API.getTaco(this.props.match.params.id)
-//       .then(res => this.setState({
-//         taco: res.data
-//       }))
-//       .catch(err => console.log(err));
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <h1>
-//           {this.state.taco.taco_type}
-//         </h1>
-//         <h3>
-//           {this.state.taco.user_id}
-//         </h3>
-//         <div>
-//           <h4>
-//             {this.state.taco.taco_type}
-//           </h4>
-//           <Card>
-//             <ul>
-//               <li>
-//                 {this.state.taco.user_id}
-//               </li>
-//               <li>
-//                 {this.state.taco.restaurant}
-//               </li>
-//               <li>
-//                 {this.state.taco.rating}
-//               </li>
-//               <li>
-//                 {this.state.taco.review}
-//               </li>
-//             </ul></Card>
-//         </div>
-//         <Link to="/">← Back to Creators</Link>
-//       </div>
-//     );
-//   }
-// }
+class TacoDetail extends Component {
+  state = {
+    taco: {}
+  };
 
-// export default TacoDetail;
+  componentDidMount() {
+    API.getTaco(this.props.match.params.id)
+      .then(res => this.setState({
+        taco: res.data
+      }))
+      .catch(err => console.log(err));
+  }
+  render() {
+    return (
+      <div>
+        <h1>
+          {this.state.taco.taco_type}
+        </h1>
+        <h3>
+          {this.state.taco.user_id}
+        </h3>
+        <div>
+          <h4>
+            {this.state.taco.taco_type}
+          </h4>
+          {/* <Card> */}
+          <ul>
+            <li>
+              {this.state.taco.user_id}
+            </li>
+            <li>
+              {this.state.taco.restaurant}
+            </li>
+            <li>
+              {this.state.taco.rating}
+            </li>
+            <li>
+              {this.state.taco.review}
+            </li>
+          </ul>
+          {/* </Card> */}
+        </div>
+        <Link to="/">← Back to Creators</Link>
+      </div>
+    );
+  }
+}
+
+export default TacoDetail;
 
 
 // import React, { Component } from 'react';
@@ -129,64 +131,3 @@
 // }
 
 // export default Detail;
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import { Col, Row, Container }
-  from "../components/Grid";
-import Banner from "../components/Banner";
-import API from "../utils/API";
-import Card from "../components/Card";
-
-class TacoDetail extends Component {
-  state = {
-    taco: {}
-  };
-
-  componentDidMount() {
-    API.gettaco(this.props.match.params.id)
-      .then(res => this.setState({ taco: res.data }))
-      .catch(err => console.log(err));
-  }
-
-  render() {
-    return (
-      <Container fluid>
-        <Row><Col size="s12">
-          <Banner>
-            <h1>
-              {this.state.taco.taco_type}
-            </h1>
-            <h3>
-              {this.state.taco.taco_type}
-            </h3>
-          </Banner>
-
-          <Card><ul>
-            <li>   <h4>{this.state.taco.taco_type}</h4></li>
-            <hr></hr>
-            <li>Created by:  {this.state.taco.taco_type}</li>
-            <li>Ingredients: {this.state.taco.taco_type}</li>
-            <li>Garnish: {this.state.taco.taco_type}</li>
-          </ul>
-          </Card>
-          <div>
-            <h3>
-              Ingredients
-        </h3>
-            <p>
-              {this.state.taco.taco_type}
-            </p>
-          </div>
-        </Col>
-        </Row>
-        <Row>
-          <Col size="s6">
-            <Link to="/">← Back to Creators</Link>
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
-}
-
-export default TacoDetail;

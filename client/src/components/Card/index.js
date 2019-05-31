@@ -1,17 +1,17 @@
-// import React from 'react';
-// // import './style.css';
+// // import React from 'react';
+// // // import './style.css';
 
-// function Card({ children }) {
-//   return (
-//     <div class="col s12">
-//       <div class="card-panel teal">
-//         {children}
-//       </div>
-//     </div>
-//   )
-// }
+// // function Card({ children }) {
+// //   return (
+// //     <div class="col s12">
+// //       <div class="card-panel teal">
+// //         {children}
+// //       </div>
+// //     </div>
+// //   )
+// // }
 
-// export default Card;
+// // export default Card;
 
 
 // import React from 'react';
@@ -50,7 +50,7 @@
 
 //         <Typography variant="h5" component="h2">
 //           be
-//           {bull}
+//           {taco.rating}
 //           nev
 //           {bull}o{bull}
 //           lent

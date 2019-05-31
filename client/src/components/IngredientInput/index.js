@@ -105,14 +105,15 @@ const rating = [
 
 class IngredientInput extends React.Component {
   state = {
-    user_id: 'C7',
-    taco_id: '2GG',
-    taco_type: 'border',
-    restaurant: 'Betos',
-    rating: 3,
-    review: 'great',
-    lat: 32342342,
-    lng: 43244234,
+    user_id: '',
+    taco_id: '',
+    taco_type: '',
+    restaurant: '',
+    taco_photo: '',
+    rating: '',
+    review: '',
+    lat: '',
+    lng: '',
   };
 
   handleChange = name => event => {

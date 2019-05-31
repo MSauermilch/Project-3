@@ -8,9 +8,9 @@ require('../config/passport')(passport);
 
 
 
-router.get('/', function (req, res) {
-  res.send('Relax. We will put the home page here later.');
-});
+// router.get('/', function (req, res) {
+//   res.send('Relax. We will put the home page here later.');
+// });
 
 //API routes
 router.use("/api", apiRoutes);

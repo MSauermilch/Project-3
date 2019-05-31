@@ -18,6 +18,36 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  container: {
+    display: 'block',
+    flexWrap: 'wrap',
+    backgroundColor: 'lightgrey',
+    border: 'solid 1px',
+    borderRadius: '5px',
+    width: 500,
+    margin: 30,
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200,
+  },
+  textFieldMedium: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 100
+  },
+  textFieldSmall: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 60,
+  },
+  dense: {
+    marginTop: 19,
+  },
+  menu: {
+    width: 200,
+  },
 });
 class TacoForm extends Component {
   state = {
@@ -79,6 +109,7 @@ class TacoForm extends Component {
         rating: this.state.rating,
         review: this.state.review,
         restaurant: this.state.restaurant,
+        taco_photo: this.state.taco_photo,
         lat: this.state.lat,
         lng: this.state.lng,
       })

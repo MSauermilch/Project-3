@@ -27,3 +27,11 @@ function App() {
   );
 }
 export default App;
+
+
+// <Route exact path="/" component={Drinks} />
+// <Route exact path="/drinks" component={Drinks} />
+// <Route exact path="/drinks/:id" component={Detail} />
+// <Route exact path="/classics" component={Classics} />
+// <Route exact path="/classics/:id" component={ClassicDetail} />
+// <Route component={NoMatch} />

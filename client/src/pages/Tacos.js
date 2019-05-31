@@ -14,16 +14,25 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import TacoForm from "../components/TacoForm";
 import IngredientInput from "../components/IngredientInput";
+import { withStyles } from "@material-ui/core";
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing.unit * 2,
+    // padding: theme.spacing.unit * 2,
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  container: {
+    width: '12px',
+    border: '3px solid black'
+  },
+  gridContainer: {
+    borderColor: 'black',
+    border: '3px solid black'
+  }
 });
 
 class Tacos extends Component {
@@ -35,7 +44,7 @@ class Tacos extends Component {
     review: "",
     restaurant: "",
     rating: "",
-    // tacoPhoto: "",
+    taco_photo: "",
     lat: "",
     lng: ""
   };
@@ -56,7 +65,7 @@ class Tacos extends Component {
         review: "",
         restaurant: "",
 
-        // tacoPhoto: "",
+        taco_photo: "",
         lat: "",
         lng: ""
       }))
@@ -78,7 +87,7 @@ class Tacos extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.taco_id && this.state.user_id && this.state.taco_type && this.state.restaurant && this.state.review && this.state.rating && this.state.lat && this.state.lng) {
+    if (this.state.taco_id && this.state.user_id && this.state.taco_type && this.state.restaurant && this.state.review && this.state.rating && this.state.taco_photo && this.state.lat && this.state.lng) {
       API.saveTaco({
         taco_id: this.state.taco_id,
         user_id: this.state.user_id,
@@ -88,7 +97,7 @@ class Tacos extends Component {
         review: this.state.review,
 
         rating: this.state.rating,
-        // tacoPhoto: this.state.tacoPhoto,
+        tacoPhoto: this.state.taco_photo,
         lat: this.state.lat,
         lng: this.state.lng
       })
@@ -98,6 +107,14 @@ class Tacos extends Component {
   };
 
   render() {
+    var photoStyles = {
+      margin: '1rem',
+      width: '15rem',
+      height: '15rem',
+      display: 'inline-block',
+    }
+
+
     return (
       <div>
         <Grid container spacing={24}>
@@ -163,12 +180,24 @@ class Tacos extends Component {
                 </Grid>
 
                 <Grid item xs={12} md={6}>
-                  <TextArea
+                  <TextField
                     value={this.state.review}
                     onChange={this.handleInputChange}
                     name="review"
                     placeholder="Review(required)"
+                    fullWidth
                   /></Grid>
+
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    name="taco_photo"
+                    required id="taco_photo"
+                    label="Taco Photo"
+                    value={this.state.taco_photo}
+                    onChange={this.handleInputChange}
+                    fullWidth
+                  />
+                </Grid>
 
                 <Grid item xs={12} md={6}>
                   <TextField
@@ -192,7 +221,7 @@ class Tacos extends Component {
                   />
                 </Grid>
                 <SubmitBtn
-                  disabled={!(this.state.taco_id && this.state.user_id && this.state.taco_type && this.state.user_id && this.state.lng)}
+                  disabled={!(this.state.taco_id && this.state.user_id && this.state.taco_type && this.state.user_id)}
                   onClick={this.handleFormSubmit}
                 >
                 </SubmitBtn>
@@ -204,29 +233,48 @@ class Tacos extends Component {
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <Paper>
               <Banner><h1>The Tacos</h1></Banner>
-              <Grid container spacing={24}>
-                {this.state.tacos.length ? (<div>
-                  <List>
-                    {this.state.tacos.map(taco => (
-                      <ListItem key={taco._id}>
-                        <Link to={"/tacos/" + taco._id}>
-                          <strong>
-                            {taco.taco_type} by {taco.user_id}
-                          </strong>
-                        </Link>
-                        <DeleteBtn onClick={() =>
-                          this.deleteTaco(taco._id)
-                        } />
-                      </ListItem>
-                    ))}
-                  </List>
+              {/* <Grid container spacing={24}> */}
 
-                </div>
+              {this.state.tacos.length ? (<div>
+                <List>
+                  {this.state.tacos.map(taco => (
+                    <ListItem key={taco._id}>
+                      <Link to={"/api/tacos/" + taco._id}>
 
-                ) : (
-                    <h3>No results to be displayed</h3>
-                  )}
-              </Grid>
+                        <Grid container
+                          // direction="column"
+                          justify="space-around"
+                          alignItems="center"
+                        ><div display="flex" className={this.props.classes.gridContainer}>
+
+                            <DeleteBtn onClick={() =>
+                              this.deleteTaco(taco._id)
+                            } />
+                            <Typography variant="h6"><strong> {taco.restaurant}</strong></Typography>
+                            <div>
+                              <Typography align="left">  SCORE :{" "} {taco.rating} </Typography>
+                            </div>
+                            {/* ternary here */}
+                            <img src={taco.taco_photo} alt={taco.restaurant + taco.taco_id} style={photoStyles}></img>
+                            <Typography variant="subtitle1"> {taco.taco_type} by {taco.user_id}</Typography>
+
+                            <br></br>
+                          </div>
+                          <Typography paragraph={true}>   {taco.review} </Typography>
+                        </Grid>
+
+                      </Link>
+
+                    </ListItem>
+                  ))}
+                </List>
+                {/* <IngredientInput></IngredientInput> */}
+              </div>
+
+              ) : (
+                  <h3>No results to be displayed</h3>
+                )}
+              {/* </Grid> */}
             </Paper>
           </Grid>
         </Grid>
@@ -235,5 +283,4 @@ class Tacos extends Component {
   }
 };
 
-
-export default Tacos;
+export default withStyles(styles)(Tacos)
