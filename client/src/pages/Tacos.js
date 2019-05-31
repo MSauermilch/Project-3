@@ -97,7 +97,7 @@ class Tacos extends Component {
         review: this.state.review,
 
         rating: this.state.rating,
-        tacoPhoto: this.state.taco_photo,
+        taco_photo: this.state.taco_photo,
         lat: this.state.lat,
         lng: this.state.lng
       })
