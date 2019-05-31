@@ -120,14 +120,14 @@ class Tacos extends Component {
         <Grid container spacing={24}>
           <Grid item xs={12} md={6}>
             <Paper>
-              <Banner><h1>Hot Taco</h1></Banner>
+              <Banner><h1>{/*Hot Taco*/}</h1></Banner>
               <form className="form-container">
                 <Typography variant="h6" gutterBottom>
                   Enter Your Tacos
                 </Typography>
                 {/* <IngredientInput /> */}
 
-                <Grid item xs={12} md={6}>
+                {/*<Grid item xs={12} md={6}>
                   <TextField
                     required id="taco_id"
                     name="taco_id"
@@ -135,7 +135,7 @@ class Tacos extends Component {
                     value={this.state.taco_id}
                     onChange={this.handleInputChange}
                     fullWidth />
-                </Grid>
+                </Grid>*/}
 
                 <Grid item xs={12} md={6}>
                   <TextField
@@ -199,7 +199,7 @@ class Tacos extends Component {
                   />
                 </Grid>
 
-                <Grid item xs={12} md={6}>
+                {/*<Grid item xs={12} md={6}>
                   <TextField
                     name="lat"
                     required id="lat"
@@ -208,9 +208,9 @@ class Tacos extends Component {
                     onChange={this.handleInputChange}
                     fullWidth
                   />
-                </Grid>
+              </Grid>*/}
 
-                <Grid item xs={12} md={6}>
+                {/*<Grid item xs={12} md={6}>
                   <TextField
                     name="lng"
                     required id="lng"
@@ -219,7 +219,8 @@ class Tacos extends Component {
                     onChange={this.handleInputChange}
                     fullWidth
                   />
-                </Grid>
+              </Grid>*/}
+
                 <SubmitBtn
                   disabled={!(this.state.taco_id && this.state.user_id && this.state.taco_type && this.state.user_id)}
                   onClick={this.handleFormSubmit}
@@ -278,7 +279,7 @@ class Tacos extends Component {
             </Paper>
           </Grid>
         </Grid>
-      </div >
+      </div>
     );
   }
 };

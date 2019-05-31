@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TacoForm from '../components/TacoForm';
+import Map from '../components/GoogleMap';
 
 export default class Dashboard extends Component {
   constructor() {
@@ -19,6 +20,7 @@ export default class Dashboard extends Component {
     return (
       <div>
         <p>{this.state.message}</p>
+        <Map />
         <TacoForm />
       </div>
     );

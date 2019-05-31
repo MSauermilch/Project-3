@@ -34,7 +34,7 @@ function Footer(props) {
 
                 </Toolbar>
             </AppBar>
-        </div >
+        </div>
     );
 }
 

@@ -1,0 +1,9 @@
+#map{
+    border: solid blue 3px;
+    border-radius: 3px;
+    height: 390px;
+    width: 390px;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}

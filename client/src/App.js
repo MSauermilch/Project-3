@@ -22,7 +22,7 @@ function App() {
           <Route component={NoMatch} />
         </Switch>
         {/* <Footer /> */}
-      </Router >
+      </Router>
     </div>
   );
 }
