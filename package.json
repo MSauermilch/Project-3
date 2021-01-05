@@ -14,7 +14,7 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-preset-react": "^6.3.13",
     "babelify": "^7.3.0",
     "bcrypt": "^3.0.6",
